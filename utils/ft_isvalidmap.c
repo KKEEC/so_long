@@ -94,12 +94,12 @@ int     isvalidmap(char **map)
 {
     if (is_rectangular(map) == 0)
     {
-        write(1, "map not rectangular\n", 21);
+        ft_putstr("map not rectangular\n");
         return 0;
     }
     if (is_closedwalls(map) == 0)
     {
-        write(1, "map not closed by walls\n", 25);
+        ft_putstr("map not closed by walls\n");
         return 0;
     }
     int i;
@@ -115,7 +115,7 @@ int     isvalidmap(char **map)
         {
             if (is_valid_char(map[i][j]) == 0)
             {
-                write(1, "Invalid character in map\n", 26);
+                ft_putstr("Invalid character in map\n");
                 return 0;
             }
             j++;
@@ -124,7 +124,7 @@ int     isvalidmap(char **map)
     }
     if (has_requiredchar(map) == 0)
     {
-        write(1, "Invalid (collectible, player or exit)\n", 39);
+        ft_putstr("Invalid (collectible, player or exit)\n");
         return 0;
     }
 

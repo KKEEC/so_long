@@ -7,10 +7,11 @@ int main(int argc, char **argv)
     t_mlx_data mlxdata;
     char *mapfile;
     char **tempmap;
+    mlxdata.totalmoves = 0;
 
     if (argc != 2)
     {
-        printf("Usage: %s <map_file.ber>\n", argv[0]);
+        ft_putstr("Usage: ./so_long <map_file.ber>\n");
         return EXIT_FAILURE;
     }
 
@@ -22,46 +23,50 @@ int main(int argc, char **argv)
     mlxdata.map = ft_split(mapfile, '\n');// need to check split fail
     if (!mlxdata.map)
     {
-        printf("Error: Failed to split map.\n");
+        ft_putstr("Error: Failed to split map.\n");
         return EXIT_FAILURE;
     }
     //create temporary map for validation check and solve check
     tempmap = ft_split(mapfile, '\n'); // need to check split fail
     if (!tempmap)
     {
-        printf("Error: Failed to split map for validation.\n");
+        ft_putstr("Error: Failed to split map for validation.\n");
         ft_free2darr(mlxdata.map);  // Free original map
         return EXIT_FAILURE;
     }
-    if (isvalidmap(tempmap) == 0 || ft_ismapsolvable(tempmap) == 0)
+    if (isvalidmap(tempmap) == 0 || ft_ismapsolvable(tempmap, &mlxdata) == 0)
     {
-        printf("Error: Map is either invalid or not solvable.\n");
+        ft_putstr("Error: Map is either invalid or not solvable.\n");
         ft_free2darr(tempmap);  // Free temporary map copy
         ft_free2darr(mlxdata.map);  // Free original map
         return EXIT_FAILURE;
     }
-    printf("Map is valid and solvable.\n");
+    ft_putstr("Map is valid and solvable.\n");
     ft_free2darr(tempmap);
-    ft_print2dchararr(mlxdata.map);
-
+    //ft_print2dchararr(mlxdata.map);
 
     mlxdata.mlx = mlx_init();
     if (!mlxdata.mlx)
     {
-        perror("mlx init failed");
+        ft_putstr("mlx init failed\n");
         ft_free2darr(tempmap);
         return EXIT_FAILURE;
     }
 
-    mlxdata.win = mlx_new_window(mlxdata.mlx, 800, 600, "so_long");
+    ft_loadtextures(&mlxdata);
+    //textures loaded
+    //after assets are ready and everything is okay find player position
+    ft_findplayerpos(&mlxdata);
+    //printf("image width: %d, image height: %d\n", mlxdata.img_width, mlxdata.img_height);
+
+    mlxdata.win = mlx_new_window(mlxdata.mlx, ft_countwindowwidth(mlxdata), ft_countwindowheight(mlxdata), "so_long");
     if (!mlxdata.win)
     {
-        perror("mlx window creation failed");
+        ft_putstr("mlx window creation failed\n");
         ft_free2darr(tempmap);
         return EXIT_FAILURE;
     }
-    //textures loaded
-    ft_loadtextures(&mlxdata);
+    
 
     //now render map;
     ft_render_map(&mlxdata);

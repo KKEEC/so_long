@@ -10,9 +10,9 @@ void    ft_loadtextures(t_mlx_data *mlxdata)
 
     if (!mlxdata->wall_img || !mlxdata->floor_img || !mlxdata->player_img || !mlxdata->collectible_img || !mlxdata->exit_img)
     {
-        write(1, "Error Loading textures\n", 24);
+        ft_putstr("Error Loading textures\n");
         exit(EXIT_FAILURE);
     }
-    printf("textures loaded and saved\n");
+    ft_putstr("textures loaded and saved\n");
    
 }

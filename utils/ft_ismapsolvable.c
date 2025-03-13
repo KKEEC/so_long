@@ -45,7 +45,7 @@ void    flood_fill(char **map, int x, int y, int *exit_found, int *collectibles_
     flood_fill(map, x, y + 1, exit_found, collectibles_left); //right
 }
 
-int    ft_ismapsolvable(char **map)
+int    ft_ismapsolvable(char **map, t_mlx_data *mlxdata)
 {
     int x;
     int y;
@@ -66,6 +66,7 @@ int    ft_ismapsolvable(char **map)
         }
         x++;
     }
+    mlxdata->collectibles = collectibles_left;
     ft_playerpos(map, &x, &y);
 
     flood_fill(map, x, y, &exit_found, &collectibles_left);
