@@ -2,7 +2,13 @@ The project requires minilibx version for linux created by 42 paris.
 
 
 To run the program
-https://github.com/42paris/minilibx-linux.git 
+
+
+
+https://github.com/42paris/minilibx-linux.git
+
+
+ 
 clone above library in the root of the project repository.
 
 
