@@ -1,11 +1,24 @@
-#include "../so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/14 11:44:22 by kkc               #+#    #+#             */
+/*   Updated: 2025/03/14 11:47:55 by kkc              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../so_long.h"
 
 int	count_words(const char *str, char c)
 {
-	int	count = 0;
-	int	i = 0;
+	int	count;
+	int	i;
 
+	count = 0;
+	i = 0;
 	while (str[i])
 	{
 		while (str[i] == c)
@@ -21,8 +34,9 @@ int	count_words(const char *str, char c)
 char	*ft_strndup(const char *str, int start, int len)
 {
 	char	*word;
-	int		i = 0;
+	int		i;
 
+	i = 0;
 	word = (char *)malloc(sizeof(char) * (len + 1));
 	if (!word)
 		return (NULL);
@@ -38,9 +52,15 @@ char	*ft_strndup(const char *str, int start, int len)
 char	**ft_split(const char *str, char c)
 {
 	char	**words;
-	int		i = 0, j = 0, start = 0;
-	int		word_count = count_words(str, c);
+	int		i;
+	int		j;
+	int		start;
+	int		word_count;
 
+	i = 0;
+	j = 0;
+	start = 0;
+	word_count = count_words(str, c);
 	words = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!words)
 		return (NULL);

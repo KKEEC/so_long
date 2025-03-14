@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I mlx
 
 # MiniLibX
-MLX_DIR = ./mlx
+MLX_DIR = ./minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx.a
 MLX_INC = -I $(MLX_DIR)
 MLX_FLAGS = -L $(MLX_DIR) -lmlx -lXext -lX11 -lm
@@ -14,7 +14,8 @@ SRCS = main.c readmap.c ./hooks/hooks.c ./utils/ft_split.c\
        ./utils/ft_strlen.c ./utils/ft_isvalidmap.c\
        ./utils/ft_ismapsolvable.c ./utils/ft_loadtextures.c\
 	   ./utils/ft_render_map.c ./utils/ft_countwindowsize.c\
-	   ./utils/ft_findplayerpos.c ./utils/ft_printfunc.c
+	   ./utils/ft_findplayerpos.c ./utils/ft_printfunc.c\
+	   ./utils/ft_isvalidchar.c
 OBJS = $(SRCS:.c=.o)
 
 # Output Program Name
