@@ -38,10 +38,13 @@ void	ft_playerpos(char **map, int *x, int *y)
 
 void	flood_fill(char **map, int x, int y, int *exitcol)
 {
+	if (map[x][y] == 'E')
+	{
+		exitcol[0] = 1;
+		return ;
+	}
 	if (map[x][y] == '1' || map[x][y] == 'V')
 		return ;
-	if (map[x][y] == 'E')
-		exitcol[0] = 1;
 	if (map[x][y] == 'C')
 		exitcol[1]--;
 	map[x][y] = 'V';

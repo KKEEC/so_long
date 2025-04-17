@@ -19,7 +19,7 @@ static	void	init_andguardmap(t_mlx_data *mlxdata, char *mapfile)
 	mlxdata->map = ft_split(mapfile, '\n');
 	if (!mlxdata->map)
 	{
-		ft_putstr("Error: Failed to split map.\n");
+		ft_putstr("Error: Failed to split.\n");
 		exit(EXIT_FAILURE);
 	}
 }
